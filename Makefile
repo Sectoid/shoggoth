@@ -16,7 +16,7 @@ test: test-vm
 test-clean: test-vm-clean
 
 .PHONY: test-vm test-vm-clean
-test-vm:
+test-vm: vm
 	$(MAKE) -C test/vm
 test-vm-clean:
 	$(MAKE) -C test/vm clean

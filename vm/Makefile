@@ -1,7 +1,7 @@
 include ../config.mk
 
 TARGET = CLnet.VM.dll
-SRC = Cons.cs
+SRC = Types\\BasicTypes.cs Types\\Scope.cs Exception.cs TypeResolver.cs
 
 all: $(TARGET)
 

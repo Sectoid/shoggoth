@@ -7,3 +7,7 @@ all: $(TARGET)
 
 $(TARGET): $(SRC)
 	$(CSC) /target:library /out:$(TARGET) $(SRC)
+
+.PHONY: clean
+clean:
+	$(RM) $(TARGET)

@@ -1,2 +1,0 @@
-CSC=csc
-RM=del

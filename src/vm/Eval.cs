@@ -50,8 +50,6 @@ public static class Evaluator
       return (x == Cons.Nil);
     }
 
-    public static object 
-
     static object print(object x)
     {
        Console.WriteLine("{0}", x);

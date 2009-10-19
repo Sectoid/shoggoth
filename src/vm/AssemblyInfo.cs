@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CL.net VM")]
+[assembly: AssemblyTitle("Shoggy VM")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gnolltech")]
-[assembly: AssemblyProduct("CL.net")]
+[assembly: AssemblyProduct("Shoggy")]
 [assembly: AssemblyCopyright("Copyright © Gnolltech 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

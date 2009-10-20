@@ -8,7 +8,7 @@
 		<AssemblyName>Shoggoth.Codegen</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-          <Reference Include="Shoggoth.VM" />
+          <Reference Include="Shoggoth.VM.dll" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -19,6 +19,7 @@
 	   <Csc
 	      Sources="@(Compile)"
 	      OutputAssembly="$(OutDir)$(AssemblyName).dll"
+              References="@(Reference)"
 	      TargetType="library"
               AdditionalLibPaths="$(OutDir)"
 	      EmitDebugInformation="true" />

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Shoggoth {
 namespace VM {
 
-static class TypeResolver
+public static class TypeResolver
 {
     public static String GetTypeRef(Type t)
     {

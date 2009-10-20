@@ -15,6 +15,7 @@
 		<Compile Include="TypeResolver.cs" />
 		<Compile Include="Types\BasicTypes.cs" />
 		<Compile Include="Types\Scope.cs" />
+		<Compile Include="DynamicScope.cs" />
 	</ItemGroup>
 
 	<Target Name="Compile">

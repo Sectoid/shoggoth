@@ -65,8 +65,48 @@ public static class Evaluator
     {
       var newScope = lexScope.NewScope();
       Cons op = (Cons)form;
-      
-      return Cons.Nil;
+      Cons args = (Cons)(op.Head);
+      while(args != Cons.Nil)
+      {
+        object arg = args.Head;
+        String type = TypeResolver.GetTypeRef(arg.GetType());
+        switch(type)
+        {
+          case "symbol":
+            lexScope.Bind(arg as Symbol, "value", Cons.Nil);
+            break;
+          case "cons":
+            Cons argSpec = op as Cons;
+            Symbol sym = argSpec.Head as Symbol;
+            if(sym == null)
+            {
+              throw new TypeError(argSpec.Head, typeof(Symbol));
+            }
+            Cons specTail = argSpec.Tail as Cons;
+            if(specTail == null)
+            {
+              throw new TypeError(specTail.Tail, typeof(Cons));
+            }
+            object value = specTail.Head;
+            lexScope.Bind(sym, "value", value);
+            break;
+          default:
+            throw new TypeError(arg, typeof(Symbol));
+        }
+
+        Cons newArgs = args.Tail as Cons;
+        if(newArgs == null)
+        {
+          throw new TypeError(newArgs, typeof(Cons));
+        }
+        args = newArgs;
+      }
+
+      Cons forms = (Cons)(op.Tail);
+      Cons prognForm = new Cons();
+      prognForm.Head = new Symbol("progn");
+      prognForm.Tail = forms;
+      return evalProgn(prognForm, newScope);
     }
 
     static object evalProgn(Cons formList, Scope lexScope)

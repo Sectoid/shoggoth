@@ -1,0 +1,17 @@
+<Project DefaultTarget="Compile" 
+	xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+        <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
+    </PropertyGroup>
+
+   <Target Name="Compile">
+	<Message Text="OutDir == $(OutDir)" />
+        <MakeDir
+            Directories="$(OutDir)"/>
+	<MSBuild Projects="src\vm\vm.build"
+                 Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
+   </Target>
+
+
+</Project>

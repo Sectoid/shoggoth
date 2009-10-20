@@ -1,0 +1,28 @@
+<Project 
+	ToolsVersion="3.5" 
+	DefaultTarget="Compile"
+	xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+        <PropertyGroup>
+		<OutDir>bin\</OutDir>
+		<AssemblyName>Shoggoth.VM</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="AssemblyInfo.cs" />
+		<Compile Include="Eval.cs" />
+		<Compile Include="Exception.cs" />
+		<Compile Include="TypeResolver.cs" />
+		<Compile Include="Types\BasicTypes.cs" />
+		<Compile Include="Types\Scope.cs" />
+	</ItemGroup>
+
+	<Target Name="Compile">
+	   <Csc
+
+	      Sources="@(Compile)"
+	      OutputAssembly="$(OutDir)$(AssemblyName).dll"
+	      TargetType="library"
+	      EmitDebugInformation="true" />
+	</Target>
+</Project>

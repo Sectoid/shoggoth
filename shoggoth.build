@@ -13,5 +13,8 @@
                  Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
    </Target>
 
-
+   <Target Name="Test" DependsOnTargets="Compile;">
+	<MSBuild Projects="test\vm\vm.build"
+                 Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
+   </Target>
 </Project>

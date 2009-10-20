@@ -1,0 +1,32 @@
+<Project 
+	ToolsVersion="3.5" 
+	DefaultTarget="Test"
+	xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+        <PropertyGroup>
+		<OutDir>bin\</OutDir>
+		<AssemblyName>Shoggoth.VM.Tests</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+          <Reference Include="Shoggoth.VM" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="AssemblyInfo.cs" />
+		<Compile Include="PrognTest.cs" />
+		<Compile Include="Main.cs" />
+	</ItemGroup>
+
+	<Target Name="Compile">
+	   <Csc
+	      Sources="@(Compile)"
+	      OutputAssembly="$(OutDir)$(AssemblyName).exe"
+              References="@(Reference)"
+              AdditionalLibPaths="$(OutDir)"
+	      TargetType="exe"
+	      EmitDebugInformation="true" />
+	</Target>
+	<Target Name="Test" DependsOnTargets="Compile">
+	</Target>
+ 
+</Project>

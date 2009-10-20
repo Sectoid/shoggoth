@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CLnet {
+namespace Shoggoth {
 namespace VM {
 
 public class Exception : System.Exception

@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using CLnet.VM.Types;
+using Shoggoth.VM.Types;
 
-namespace CLnet.VM {
+namespace Shoggoth.VM {
 
 public class TypeError : VM.Exception
 {

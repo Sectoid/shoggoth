@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using CLnet.VM;
-using CLnet.VM.Types;
+using Shoggoth.VM;
+using Shoggoth.VM.Types;
 
-namespace CLnet.VM.Test {
+namespace Shoggoth.VM.Test {
 public static class LetTest
 {
     static List<KeyValuePair<object, object>> TestPatterns = Init();

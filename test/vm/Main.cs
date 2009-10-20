@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CLnet.VM.Test
+namespace Shoggoth.VM.Test
 {
 
 public sealed class Test

@@ -11,6 +11,8 @@
             Directories="$(OutDir)"/>
 	<MSBuild Projects="src\vm\vm.build"
                  Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
+	<MSBuild Projects="src\codegen\codegen.build"
+                 Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
    </Target>
 
    <Target Name="Test" DependsOnTargets="Compile;">

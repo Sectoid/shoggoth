@@ -10,12 +10,13 @@
 
 	<ItemGroup>
 		<Compile Include="AssemblyInfo.cs" />
-		<Compile Include="Eval.cs" />
 		<Compile Include="Exception.cs" />
+		<Compile Include="Context.cs" />
 		<Compile Include="TypeResolver.cs" />
-		<Compile Include="Types\BasicTypes.cs" />
-		<Compile Include="Types\Scope.cs" />
 		<Compile Include="DynamicScope.cs" />
+		<Compile Include="ConsAux.cs" />
+		<Compile Include="Types\BasicTypes.cs" />
+		<Compile Include="Types\Function.cs" />
 	</ItemGroup>
 
 	<Target Name="Compile">

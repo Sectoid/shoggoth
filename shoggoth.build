@@ -18,5 +18,7 @@
    <Target Name="Test" DependsOnTargets="Compile;">
 	<MSBuild Projects="test\vm\vm.build"
                  Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
+	<MSBuild Projects="test\codegen\codegen.build"
+                 Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
    </Target>
 </Project>

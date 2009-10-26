@@ -6,6 +6,7 @@
         <PropertyGroup>
 		<OutDir>bin\</OutDir>
 		<AssemblyName>Shoggoth.VM.Tests</AssemblyName>
+                <NUnitConsole>$(NUnitDir)\nunit-console.exe</NUnitConsole>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -13,20 +14,21 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="AssemblyInfo.cs" />
-		<Compile Include="PrognTest.cs" />
-		<Compile Include="Main.cs" />
+		<Compile Include="ConsTest.cs" />
 	</ItemGroup>
 
 	<Target Name="Compile">
 	   <Csc
 	      Sources="@(Compile)"
-	      OutputAssembly="$(OutDir)$(AssemblyName).exe"
+	      OutputAssembly="$(OutDir)$(AssemblyName).dll"
               References="@(Reference)"
               AdditionalLibPaths="$(OutDir)"
-	      TargetType="exe"
+	      TargetType="library"
 	      EmitDebugInformation="true" />
 	</Target>
 	<Target Name="Test" DependsOnTargets="Compile">
+          <Exec Command="$(NUnitConsole) $(AssemblyName).dll"
+                WorkingDirectory="$(OutPath)" />
 	</Target>
  
 </Project>

@@ -5,7 +5,7 @@ using Shoggoth.VM;
 using Shoggoth.VM.Types;
 
 namespace Shoggoth.VM.Test {
-public static class PrognTest
+public static class ConsTest
 {
     // static List<KeyValuePair<object, object>> TestPatterns = Init();
 
@@ -18,6 +18,8 @@ public static class PrognTest
     //     });
     //   return retVal;
     // }
+
+    
 
     static public void Test1()
     {

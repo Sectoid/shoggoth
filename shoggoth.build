@@ -3,6 +3,7 @@
 
     <PropertyGroup>
         <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
+        <NUnitDir>$(MSBuildProjectDirectory)\tools\nunit\</NUnitDir>
     </PropertyGroup>
 
    <Target Name="Compile">
@@ -17,7 +18,7 @@
 
    <Target Name="Test" DependsOnTargets="Compile;">
 	<MSBuild Projects="test\vm\vm.build"
-                 Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
+                 Properties="Configuration=$(Configuration);OutDir=$(OutDir);NUnitDir=$(NUnitDir)" />
 	<MSBuild Projects="test\codegen\codegen.build"
                  Properties="Configuration=$(Configuration);OutDir=$(OutDir)" />
    </Target>

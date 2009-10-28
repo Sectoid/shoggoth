@@ -3,3 +3,4 @@
 *.dll
 *.mdb
 *.pdb
+/bin/TestResult.xml

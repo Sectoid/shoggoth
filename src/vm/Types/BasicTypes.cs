@@ -19,6 +19,11 @@ public class SymbolDoesNotExist : VM.Exception
 
 public sealed class Cons
 {
+    public Cons()
+    {
+      Head = Nil;
+      Tail = Nil;
+    }
     public object Head { get; set; }
     public object Tail { get; set; }
     public static readonly Cons Nil = new Cons();

@@ -9,23 +9,31 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-          <Reference Include="Shoggoth.VM.dll" />
-          <Reference Include="Shoggoth.Codegen.dll" />
+          <Reference Include="Shoggoth.Codegen" />
+          <Reference Include="nunit.framework" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<Compile Include="AssemblyInfo.cs" />
-		<Compile Include="Main.cs" />
 	</ItemGroup>
 
 	<Target Name="Compile">
-	   <Csc
+          <ResolveAssemblyReference 
+              SearchPaths="{GAC};$(OutDir);"
+              Assemblies="@(Reference)">
+              <Output TaskParameter="ResolvedFiles"
+                      ItemName="ResolvedReferences" />
+              <Output TaskParameter="ResolvedDependencyFiles"
+                      ItemName="ResolvedDepReferences" />
+          </ResolveAssemblyReference>
+          <Csc
 	      Sources="@(Compile)"
 	      OutputAssembly="$(OutDir)$(AssemblyName).dll"
-              References="@(Reference)"
-              AdditionalLibPaths="$(OutDir)"
-	      TargetType="exe"
+              References="@(ResolvedReferences);@(ResolvedDepReferences)"
+	      TargetType="library"
 	      EmitDebugInformation="true" />
 	</Target>
+
 	<Target Name="Test" DependsOnTargets="Compile">
           <Exec Command="nunit-console2 $(AssemblyName).dll" 
                 WorkingDirectory="$(OutDir)" />          

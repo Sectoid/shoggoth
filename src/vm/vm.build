@@ -20,10 +20,18 @@
 	</ItemGroup>
 
 	<Target Name="Compile">
-	   <Csc
-
+          <ResolveAssemblyReference 
+              SearchPaths="{GAC};$(OutDir);"
+              Assemblies="@(Reference)">
+              <Output TaskParameter="ResolvedFiles"
+                      ItemName="ResolvedReferences" />
+              <Output TaskParameter="ResolvedDependencyFiles"
+                      ItemName="ResolvedDepReferences" />
+          </ResolveAssemblyReference>
+          <Csc
 	      Sources="@(Compile)"
 	      OutputAssembly="$(OutDir)$(AssemblyName).dll"
+              References="@(ResolvedReferences);@(ResolvedDepReferences)"
 	      TargetType="library"
 	      EmitDebugInformation="true" />
 	</Target>

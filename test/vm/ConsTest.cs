@@ -3,51 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using Shoggoth.VM;
 using Shoggoth.VM.Types;
+using NUnit.Framework;
+using NUnit.Framework.SyntaxHelpers;
 
 namespace Shoggoth.VM.Test {
-public static class ConsTest
-{
-    // static List<KeyValuePair<object, object>> TestPatterns = Init();
 
-    // static List<KeyValuePair<object, object>> Init()
-    // {
-    //   int checkVal = 4;
-    //   List<KeyValuePair<object, object>> retVal = new List<KeyValuePair<object, object>>(new KeyValuePair<object, object>[1]
-    //     {
-    //       new KeyValuePair<object, object>(Evaluator.list(new Symbol("progn"), 1, 2, 3, checkVal), checkVal),
-    //     });
-    //   return retVal;
-    // }
-
-    
-
-    static public void Test1()
+[TestFixture]
+public class ConsTest
+{    
+    [Test]
+    public void NilTest()
     {
-      // String result = "ok";
-      // try
-      // {
-      //   foreach(var pattern in TestPatterns)
-      //   {
-      //     var evalResult = Evaluator.eval(pattern.Key);
-      //     if(pattern.Value != evalResult)
-      //     {
-      //       result = String.Format("failed, got {0} but expected {1} when evaling {2}", evalResult, pattern.Value, pattern.Key);
-      //       break;
-      //     }
-          
-      //   }
-      // }
-      // catch(VM.Exception e)
-      // {
-      //   result = "failed, got VM's exception: " + e.Message;
-      // }
-      // catch(System.Exception e)
-      // {
-      //   result = "failed, got unknown exception: " + e.Message;
-      // }
-
-      // Console.WriteLine("[PrognTest.Test1] result: " + result);
+      Assert.That(Cons.Nil, Is.TypeOf(typeof(Cons)));
     }
+
+    [Test]
+    public void DefaultTest()
+    {
+      var defCons = new Cons();
+      Assert.That(defCons.Head, Is.EqualTo(Cons.Nil));
+      Assert.That(defCons.Tail, Is.EqualTo(Cons.Nil));
+    }
+
+    [Test]
+    public void ObjEqualtyTest()
+    {
+      var strCons = new Cons { Head = "Test",  Tail = Cons.Nil };
+      Assert.That(strCons.Head, Is.EqualTo("Test"));      
+    }
+
 }
 
 }

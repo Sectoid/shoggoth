@@ -8,7 +8,7 @@
 		<AssemblyName>Shoggoth.Codegen</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-          <Reference Include="Shoggoth.VM.dll" />
+          <Reference Include="Shoggoth.VM" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -20,12 +20,19 @@
 	</ItemGroup>
 
 	<Target Name="Compile">
-	   <Csc
+          <ResolveAssemblyReference 
+              SearchPaths="{GAC};$(OutDir);"
+              Assemblies="@(Reference)">
+              <Output TaskParameter="ResolvedFiles"
+                      ItemName="ResolvedReferences" />
+              <Output TaskParameter="ResolvedDependencyFiles"
+                      ItemName="ResolvedDepReferences" />
+          </ResolveAssemblyReference>
+          <Csc
 	      Sources="@(Compile)"
 	      OutputAssembly="$(OutDir)$(AssemblyName).dll"
-              References="@(Reference)"
+              References="@(ResolvedReferences);@(ResolvedDepReferences)"
 	      TargetType="library"
-              AdditionalLibPaths="$(OutDir)"
 	      EmitDebugInformation="true" />
 	</Target>
 </Project>

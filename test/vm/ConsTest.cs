@@ -28,8 +28,10 @@ public class ConsTest
     [Test]
     public void ObjEqualtyTest()
     {
-      var strCons = new Cons { Head = "Test",  Tail = Cons.Nil };
-      Assert.That(strCons.Head, Is.EqualTo("Test"));      
+      String testStr = "Test";
+      var strCons = new Cons { Head = testStr,  Tail = testStr };
+      Assert.That(strCons.Head, Is.EqualTo(testStr));      
+      Assert.That(strCons.Tail, Is.EqualTo(testStr));
     }
 
 }

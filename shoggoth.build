@@ -3,7 +3,6 @@
 
     <PropertyGroup>
         <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
-        <NUnitDir>$(MSBuildProjectDirectory)\tools\nunit\</NUnitDir>
     </PropertyGroup>
 
    <Target Name="Compile">

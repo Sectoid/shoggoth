@@ -27,8 +27,8 @@
 	      EmitDebugInformation="true" />
 	</Target>
 	<Target Name="Test" DependsOnTargets="Compile">
-          <Exec Command="$(NUnitConsole) $(AssemblyName).dll"
-                WorkingDirectory="$(OutPath)" />
+          <Exec Command="nunit-console2 $(AssemblyName).dll" 
+                WorkingDirectory="$(OutDir)" />
 	</Target>
  
 </Project>

@@ -10,7 +10,6 @@ public sealed class Test
 
     static public int Main(string[] argv)
     {
-      CompileTest.Test1();
       return 0;
     }
 }

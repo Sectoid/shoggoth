@@ -16,6 +16,7 @@
 	<ItemGroup>
 		<Compile Include="AssemblyInfo.cs" />
 		<Compile Include="ConsTest.cs" />
+		<Compile Include="SymbolTest.cs" />
 	</ItemGroup>
 
 	<Target Name="Compile">

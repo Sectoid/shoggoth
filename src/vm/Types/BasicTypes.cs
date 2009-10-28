@@ -54,7 +54,7 @@ public sealed class Package
     {
       if(name == null)
       {
-        throw new VM.Exception("Symbol's name can't be null!");
+        throw new ArgumentException("Symbol's name can't be null!");
       }
 
       if(!_Symbols.ContainsKey(name))
@@ -67,6 +67,11 @@ public sealed class Package
 
     public Symbol FindSymbol(String name)
     {
+      if(name == null)
+      {
+        throw new ArgumentException("Symbol's name can't be null!");
+      }
+
       Symbol retVal;
       _Symbols.TryGetValue(name, out retVal);
       if(retVal == null)

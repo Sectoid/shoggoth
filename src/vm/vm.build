@@ -15,7 +15,9 @@
 		<Compile Include="Types\BasicTypes.cs" />
 		<Compile Include="Types\Function.cs" />
 		<Compile Include="Types\ILispObject.cs" />
-		<Compile Include="Types\LispCore.cs" />
+		<Compile Include="Types\DummyVector.cs" />
+		<Compile Include="State.cs" />
+		<Compile Include="ICoreWriter.cs" />
 		<Compile Include="Context.cs" />
 		<Compile Include="TypeResolver.cs" />
 		<Compile Include="DynamicScope.cs" />

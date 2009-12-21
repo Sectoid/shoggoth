@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
+
 using Shoggoth.VM;
 using Shoggoth.VM.Types;
 
@@ -14,6 +15,8 @@ public partial class Compiler
     {     
       switch(sym.Name)
       {
+        case "progn":
+          return true;
         case "let":
           return true;
         default:
@@ -30,9 +33,32 @@ public partial class Compiler
         case "let":
           CompileLet(form.Tail as Cons, lexScope);
           return;
+        case "progn":
+          CompileProgn(form.Tail as Cons, lexScope);
+          return;
         default:
           throw new CompilerError("Unknown special form {0}", formSym.Name);
       }
+    }
+
+    private void CompileProgn(Cons formList, LexicalScope lexScope)
+    {
+      if(formList.Head != Cons.Nil)
+      {
+        while (formList.Tail != Cons.Nil)
+        {
+          CompileForm(formList.Head, lexScope);
+          _gen.Emit(OpCodes.Pop);
+          Assert.TypeIs(formList.Tail, typeof(Cons));
+          formList = formList.Tail as Cons;
+        }
+        CompileForm(formList.Head, lexScope);
+      }
+      else
+      {
+        var fldInfo = typeof(Cons).GetField("Nil", BindingFlags.Public | BindingFlags.Static);
+        _gen.Emit(OpCodes.Ldsfld, fldInfo);
+      }      
     }
     
     private void CompileLet(object form, LexicalScope lexScope)
